@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run compile && npm run serve",
+    "start": "npm run compile-prod && node server.js",
     "serve": "npm run compile && npm run watch-css & npm run watch-js",
     "compile": "npm run compile-css & npm run compile-js",
     "compile-prod": "npm run compile-css-prod & npm run compile-js",
@@ -10,7 +10,7 @@
     "compile-js": "rollup ./src/js/scripts.js --file ./public/dist/js/scripts.js --format iife",
     "watch-js": "rollup ./src/js/scripts.js --file ./public/dist/js/scripts.js --format iife --watch"
   },
-  "Devdependencies": {
+  "dependencies": {
     "express": "^4.17.2",
     "rollup": "^2.63.0",
     "sass": "^1.47.0"
