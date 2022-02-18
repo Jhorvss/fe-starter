@@ -1,41 +1,51 @@
-// 1. Fetch Data
-fetch("/api/dashboard")
-.then((response) => response.json())
-.then((data) => {
-  console.log(data);
-  // 2. Render the Data
-  document.getElementById('Total-Followers').innerHTML = `
-    Total ${data.primary_metrics.total.label}: ${data.primary_metrics.total.value} `;
+async function init() {
+  const $content = document.querySelector('.content');
+  const $total = $content.querySelector('.total');
+  const $primaryCards = $content.querySelector('.primary-cards');
+  const $supportingCards = $content.querySelector('.supporting-cards');
 
-  document.getElementById('upper-card-soc-med').innerHTML = '';
-  data.primary_metrics.cards.forEach(element => {
-    document.getElementById('upper-card-soc-med').innerHTML +=  `
-    <div class = "social-med-card-${element.service}">
-          <div class = "user">
-            <img class = "logo" src="/images/icon-${element.service}.svg" alt="${element.service}-logo">
-            <p class = "username">${element.username}</p>
-            <p class = "numbers">${element.value}</p>
-            <p class = "Followers">${element.label}</p>
-            <p class = "updates-${element.metric.trend}">
-             <img src="/images/icon-${element.metric.trend}.svg" alt="icon-${element.metric.trend}">
-             ${element.metric.value} Today </p>
-          </div>
-        </div>
+  const response = await fetch('./api/dashboard');
+  const data = await response.json();
+
+  const { primary_metrics, supporting_metrics: supportingCards } = data;
+  const { total, cards: primaryCards } = primary_metrics;
+
+  // 1. render the total header text
+  $total.textContent = `Total ${total.label}: ${total.value}`;
+
+  // 2. render the primary cards
+  primaryCards.forEach(card => {
+    $primaryCards.innerHTML += renderCard(card);
+  })
+
+  // 3. render the supporting cards
+  supportingCards.forEach(card => {
+    $supportingCards.innerHTML += renderCard(card);
+  })
+}
+
+function renderCard(card) {
+  const { service, username, value, label, metric } = card;
+  const { trend, percent, value: trendValue } = metric;   
+  
+  return `
+    <article class="card service-${service}">
+      <div class="card-user">
+        <img src="./images/icon-${service}.svg" alt="${service}">
+        ${username ? `<p>@${username}</p>` : ''}
+      </div>
+
+      <div class="card-main">
+        <p class="card-number">${value}</p>
+        <p class="card-label">${label}</p>
+      </div>
+
+      <div class="card-metric is-${trend}">
+        <img src="./images/icon-${trend}.svg" alt="${trend}">
+        <p>${percent ? `${percent}%` : `${trendValue} Today`}</p>
+      </div>
+    </article>
   `;
-  });
-  //Modifying contents of supporting metrics.
-  document.getElementById('lower-cards-soc-med').innerHTML = "";
-  data.supporting_metrics.forEach(element => {
-    document.getElementById('lower-cards-soc-med').innerHTML += `
-    <div class = "social-med-card-update">
-    <div class = "updates">
-      <p class = "statistics"> ${element.label}
-        <img class = "logo" src="/images/icon-${element.service}.svg" alt="icon-${element.service}"></p>
-        <p class="FB-Page Views">${element.value}</p>
-        <p class="updates-${element.metric.trend}">
-          <img src="/images/icon-${element.metric.trend}.svg" alt="icon-${element.metric.trend}">${element.metric.percent}%</p>
-    </div>
-  </div>
-   `;  
-});
-});
+}
+
+init();

@@ -1,195 +1,143 @@
-body {
-    background-color: #1e202a;
-}
-
 * {
-    color:#ffffff;
-    font-family:Inter;
-    font-size:14px;
-    font-weight:400, 700;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.soc-med-dashboard{
-  width: 70%;
-  margin: auto;
+body {
+  background-color: hsl(230, 17%, 14%);
+  color: white;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
 }
 
-.soc-med-total-followers{
-  width: 70%;
-  margin: auto;
+.content {
+  width: 1120px;
+  margin: 0 auto;
 }
 
-.Overview-today{
-  width: 70%;
-  margin: auto;
-}
-
-.dark-mode-button {
-    color: #1db489;
-    position: absolute;
-    top: 50px;
-    right: 530px;
-    width: 60px;
-    height: 34px;
-  }
-.dark-mode{
-  top: 40px;
-  right: 600px;
-  position: absolute;
-
-}
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #1db489;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: #1e202a;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  
-#upper-card-soc-med{
-  width: 70%;
-  margin: auto;
-
-}
-
-.social-med-card-facebook {
-    background-color: hsl(228, 28%, 20%);
-    padding: auto;
-    height: 200px;
-    width: 250px;
-    display: inline-block;
-    overflow: auto;
-    margin:80px 8px 30px 8px;
-    text-align: center;
-    justify-content: space-between;
-    border-top: solid hsl(208, 92%, 53%);
-    border-width: 2px;
-}
-
-.social-med-card-instagram {
-    background-color: #252a41;
-    padding: auto;
-    height: 200px;
-    width: 250px;
-    display: inline-block;
-    overflow: auto;
-    margin:80px 8px 30px 8px;
-    text-align: center;
-    justify-content: space-between;
-    border-top: solid;
-    border-width: 2px;
-    border-image-source: linear-gradient(45deg, hsl(37, 97%, 70%) 50%, hsl(329, 70%, 58%) 100%);
-    border-image-slice: 1;
-}
-
-.social-med-card-twitter {
-    background-color: #252a41;
-    padding: auto;
-    height: 200px;
-    width: 250px;
-    display: inline-block;
-    overflow: auto;
-    margin:80px 8px 30px 8px;
-    text-align: center;
-    justify-content: space-between;
-    border-top: solid hsl(203, 89%, 53%);
-    border-width: 2px;
-
-}
-
-.social-med-card-youtube {
-    background-color: #252a41;
-    padding: auto;
-    height: 200px;
-    width: 250px;
-    display: inline-block;
-    overflow: auto;
-    margin:80px 8px 30px 8px;
-    text-align: center;
-    justify-content: space-between;
-    border-top: solid hsl(348, 97%, 39%);
-    border-width: 2px;
-}
-.social-med-card-update {
-    background-color: #252a41;
-    padding: auto;
-    height: 150px;
-    width: 250px;
-    display: inline-block;
-    overflow: auto;
-    margin: 10px 8px 10px 8px;
-    // text-align: center;
-    margin-right:9.5px;
-}
-
-.topcards{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.overview-cards{
-  display: block;
+.primary-cards {
+  display: flex;
   flex-direction: row;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.primary-cards .card {
+  width: 253px;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  background-color: hsl(228, 28%, 20%);
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.primary-cards .card-user{
+  display: flex;
   justify-content: center;
+  gap: 10px;
+  align-items:center;
+}
+
+.primary-cards div.card-user p{
+  color:  hsl(228, 34%, 66%);
+  font-size: 1.0em;
+}
+
+.primary-cards p.card-number{
+  font-size: 3.0em;
+  margin-top: 15px;
+}
+
+.primary-cards p.card-label{
+  text-transform: uppercase;
+  color: hsl(228, 34%, 66%);
+  letter-spacing: 3px;
+  font-weight: 350;
+}
+
+.primary-cards .service-facebook{
+  border-top: solid 6px;
+  border-color: hsl(208, 92%, 53%);
+}
+
+.primary-cards .service-twitter{
+  border-top: solid 6px;
+  border-color: hsl(203, 89%, 53%);
+}
+
+.primary-cards .service-instagram{
+  border-top: solid 6px;
+  border-image-source: linear-gradient(45deg, hsl(37, 97%, 70%) 50%,   hsl(329, 70%, 58%) 100%);
+  border-image-slice: 1;
+  border-radius: 10px;
+}
+
+.primary-cards .service-youtube{
+  border-top: solid 6px;
+  border-color: hsl(348, 97%, 39%);
+}
+
+
+.supporting-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.supporting-cards .card {
+  width: 253px;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  background-color: hsl(228, 28%, 20%);
+}
+
+.supporting-cards .card-main{
+  text-align: left;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 30px;
+}
+
+.supporting-cards .card-number{
+  font-size: 1.5em;
+  
+}
+
+.supporting-cards .card-label{
+  color: hsl(228, 34%, 66%);
+  
+}
+
+.supporting-cards .card-metric{
+  margin-left: 150px;
+  margin-top: -20px;
+  font-size: 12px;
+}
+
+.supporting-cards .card img{
+  float: right;
+}
+
+.is-up{
+  color: hsl(163, 72%, 41%);
+  display: flex;
   align-items: center;
-  grid-column-gap: 5px;
-  width: 70%;
-  margin: auto;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 12px;
 }
 
-.updates-up {
-    color:#1db489;
-}
-
-.updates-down {
-    color:#dc414c;
-}
-.logo{
-    display: inline-block;
-    margin: 1px 10px
+.is-down{
+  color: hsl(356, 69%, 56%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 12px;
 }
